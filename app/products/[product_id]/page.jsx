@@ -1,6 +1,18 @@
 import Image from 'next/image';
 import React from 'react'
 
+export async function generateStaticParams(){
+  const products = await fetch(`https://dummyjson.com/products`).then(
+    res => res.json()
+  ).then(
+    res=>res.products
+  );
+
+  return products.map(
+    product =>({product_id:`${product.id}`})
+  )
+}
+
 const loadProduct = async (id) => {
   const res = await fetch(`https://dummyjson.com/products/${id}`).then(
     res => res.json()
