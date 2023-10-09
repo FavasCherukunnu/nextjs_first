@@ -3,7 +3,11 @@ import React from 'react'
 
 const loadProducts = async ()=>{
 
-    const res = await fetch('https://dummyjson.com/products').then(
+    const res = await fetch('https://dummyjson.com/products',
+        {
+            cache:'no-store'
+        }
+    ).then(
         res=>res.json()
     ).then(
         res=>res.products
