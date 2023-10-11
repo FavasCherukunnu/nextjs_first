@@ -1,5 +1,7 @@
+import Link from 'next/link'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { TopNavBar } from './components/topNavBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -9,13 +11,13 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+
+
   return (
     <html className='h-full' lang="en">
       <body className='bg-stone-100 h-full'>
         <div className='flex w-full flex-col'>
-          <div className=' border z-50 p-3'>
-            <p className='text-4xl '>Header</p>
-          </div>
+          <TopNavBar/>
           <div className='grow'>
             {children}
           </div>
