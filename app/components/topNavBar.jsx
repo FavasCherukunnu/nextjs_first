@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { usePathname, useSelectedLayoutSegment, useSelectedLayoutSegments } from 'next/navigation';
 import React from 'react'
+import { NavLinkManual } from './NavLink';
 export function TopNavBar() {
 
     const pathName = useSelectedLayoutSegment();
@@ -10,15 +11,15 @@ export function TopNavBar() {
         navItems: [
             {
                 name: 'Products',
-                link: 'products'
+                link: '/products'
             },
             {
                 name: 'Kart',
-                link: 'cart'
+                link: '/cart'
             },
             {
                 name: 'Orders',
-                link: 'orders'
+                link: '/orders'
             }
         ]
     }
@@ -30,12 +31,19 @@ export function TopNavBar() {
                 {
                     navConfig.navItems.map(
                         (links, index) => (
-                            <Link
-                                className={`inline-block px-4 py-3 mx-1 rounded-md border-transparent border ease-in duration-150 hover:border-stone-200 hover:shadow-md ${pathName == links.link ? 'border-stone-200 shadow-md' : ''}`}
-                                key={index} href={navConfig.initialPath+links.link}
+                            <NavLinkManual
+                                className={
+                                    (isActive)=>{
+                                        return `inline-block px-4 py-3 mx-1 rounded-md border-transparent border ease-in duration-150 hover:border-stone-200 hover:shadow-md ${isActive ? 'border-stone-200 shadow-md' : ''}`
+                                    }
+                                }
+                                key={index}
+                                href={links.link}
+                                follow={true}
+                                fromRoot={true}
                             >
                                 {links.name}
-                            </Link>)
+                            </NavLinkManual>)
                     )
                 }
             </div>
