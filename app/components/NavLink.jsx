@@ -65,9 +65,6 @@ export function NavLinkManual({ href = '', className, follow = true,fromRoot=fal
 
             const tab = extractTabFromUrl(segment)
 
-            console.log('segment', tab);
-            console.log('tab', extractTabFromUrl(href));
-
             if (tab === extractTabFromUrl(href)) {
                 setclassrealName(className ? className(true) : '')
                 setIsActive(true)

@@ -4,11 +4,16 @@ import { usePathname, useSelectedLayoutSegment, useSelectedLayoutSegments } from
 import React from 'react'
 import { NavLinkManual } from './NavLink';
 export function TopNavBar() {
-
-    const pathName = useSelectedLayoutSegment();
     const navConfig = {
-        initialPath: '/',
         navItems: [
+            {
+                name: 'Home',
+                link: '/'
+            },
+            {
+                name: 'Dashboard',
+                link: '/dashboard'
+            },
             {
                 name: 'Products',
                 link: '/products'
@@ -33,7 +38,7 @@ export function TopNavBar() {
                         (links, index) => (
                             <NavLinkManual
                                 className={
-                                    (isActive)=>{
+                                    (isActive) => {
                                         return `inline-block px-4 py-3 mx-1 rounded-md border-transparent border ease-in duration-150 hover:border-stone-200 hover:shadow-md ${isActive ? 'border-stone-200 shadow-md' : ''}`
                                     }
                                 }
@@ -43,7 +48,8 @@ export function TopNavBar() {
                                 fromRoot={true}
                             >
                                 {links.name}
-                            </NavLinkManual>)
+                            </NavLinkManual>
+                        )
                     )
                 }
             </div>
